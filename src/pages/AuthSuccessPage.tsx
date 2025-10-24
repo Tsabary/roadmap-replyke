@@ -8,6 +8,7 @@ function AuthSuccessPage() {
   const { setClient, setAccessToken } = useAuth();
 
   useEffect(() => {
+    console.log("AuthSuccessPage useEffect triggered");
     const accessToken = searchParams.get("accessToken");
     const id = searchParams.get("id");
     const email = searchParams.get("email");
