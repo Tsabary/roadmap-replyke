@@ -1,6 +1,4 @@
 import { useTheme } from "next-themes";
-import discordIconBlack from "@/assets/discord.svg";
-import discordIconWhite from "@/assets/discord-white.svg";
 
 function DiscordButton() {
   const { theme } = useTheme();
@@ -18,7 +16,7 @@ function DiscordButton() {
       className="flex items-center px-1.5 py-1 bg-container rounded-xl cursor-pointer text-sm border-2 border-border text-foreground"
     >
       <img
-        src={isDarkTheme ? discordIconWhite : discordIconBlack}
+        src={isDarkTheme ? "/discord-white.svg" : "/discord.svg"}
         alt="Discord icon"
         className="size-6"
       />
