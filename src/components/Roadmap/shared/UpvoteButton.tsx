@@ -10,6 +10,10 @@ function UpvoteButton() {
     removeEntityUpvote,
   } = useEntity();
 
+  const voteCount =
+    (ticket?.upvotes?.length || 0) - (ticket?.downvotes?.length || 0);
+  // const mockVoteCount = Math.floor(Math.random() * 16); // Random vote count 0-15
+
   if (!ticket) return null;
   return (
     <button
@@ -22,7 +26,7 @@ function UpvoteButton() {
       )}
     >
       <ChevronUp className="h-3.5 w-3.5" />
-      <span>{ticket.upvotes.length}</span>
+      <span>{voteCount}</span>
     </button>
   );
 }

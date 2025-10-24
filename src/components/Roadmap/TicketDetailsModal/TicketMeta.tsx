@@ -32,7 +32,7 @@ function TicketMeta({
           </div>
           <div>
             {columnId &&
-              (user?.role === "admin" ? (
+              (["admin", "moderator"].includes(user?.role || "") ? (
                 <StageSelector columnId={columnId} />
               ) : (
                 <StageBadge columnId={columnId} />

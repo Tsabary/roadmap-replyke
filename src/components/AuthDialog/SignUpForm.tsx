@@ -1,12 +1,15 @@
-"use client";
-
 import React, { useState, useEffect, useCallback } from "react";
-import { useAuth, useCheckUsernameAvailability } from "@replyke/react-js";
+import { useCheckUsernameAvailability } from "@replyke/react-js";
+import { Check, X, Loader2 } from "lucide-react";
 import validator from "validator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Check, X, Loader2 } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+
+import GitHubAuthButton from "./GitHubAuthButton";
+import GoogleAuthButton from "./GoogleAuthButton";
+import useAuth from "../../hooks/useAuth";
 
 export default function SignupForm({
   setOpen,
@@ -157,12 +160,43 @@ export default function SignupForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
+        <Label htmlFor="email-signup">Email</Label>
+        <Input
+          id="email-signup"
+          type="email"
+          placeholder="name@replyke.com"
+          autoComplete="email"
+          onChange={(event) =>
+            setCredentials((cs) => ({
+              ...cs,
+              email: event.target.value.trim(),
+            }))
+          }
+          required
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="password-signup">Password</Label>
+        <Input
+          id="password-signup"
+          type="password"
+          required
+          onChange={(event) =>
+            setCredentials((cs) => ({
+              ...cs,
+              password: event.target.value.trim(),
+            }))
+          }
+        />
+      </div>
+      <div className="space-y-2">
         <Label htmlFor="username-signup">Username</Label>
         <div className="relative">
           <Input
             id="username-signup"
             type="text"
             placeholder="johndoe"
+            autoComplete="username"
             value={credentials.username}
             onChange={(event) => {
               const validatedUsername = validateUsername(event.target.value);
@@ -199,41 +233,28 @@ export default function SignupForm({
           <p className="text-xs text-green-600">Username is available</p>
         )}
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="email-signup">Email</Label>
-        <Input
-          id="email-signup"
-          type="email"
-          placeholder="name@replyke.com"
-          onChange={(event) =>
-            setCredentials((cs) => ({
-              ...cs,
-              email: event.target.value.trim(),
-            }))
-          }
-          required
-        />
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="password-signup">Password</Label>
-        <Input
-          id="password-signup"
-          type="password"
-          required
-          onChange={(event) =>
-            setCredentials((cs) => ({
-              ...cs,
-              password: event.target.value.trim(),
-            }))
-          }
-        />
-      </div>
       <Button type="submit" className="w-full" disabled={invalidDetails}>
         Create Account
       </Button>
       {errors.form && (
         <p className="text-xs text-red-600 mt-2">{errors.form}</p>
       )}
+
+      <div className="relative my-4">
+        <div className="absolute inset-0 flex items-center">
+          <Separator className="w-full" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">
+            Or continue with
+          </span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <GitHubAuthButton />
+        <GoogleAuthButton />
+      </div>
     </form>
   );
 }

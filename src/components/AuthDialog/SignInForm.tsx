@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { handleError, useAuth } from "@replyke/react-js";
+import { handleError } from "@replyke/react-js";
 import validator from "validator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+
+import GitHubAuthButton from "./GitHubAuthButton";
+import GoogleAuthButton from "./GoogleAuthButton";
+import useAuth from "../../hooks/useAuth";
 
 export default function SignInForm({
   setOpen,
@@ -104,6 +109,22 @@ export default function SignInForm({
       {errors.form && (
         <p className="text-xs text-red-600 mt-2">{errors.form}</p>
       )}
+
+      <div className="relative my-4">
+        <div className="absolute inset-0 flex items-center">
+          <Separator className="w-full" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">
+            Or continue with
+          </span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <GitHubAuthButton />
+        <GoogleAuthButton />
+      </div>
     </form>
   );
 }

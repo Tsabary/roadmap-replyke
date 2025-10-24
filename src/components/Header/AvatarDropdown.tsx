@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth, useUser } from "@replyke/react-js";
+import { useAuth as useAuthReplyke, useUser } from "@replyke/react-js";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,9 +10,11 @@ import {
 import { Button } from "@/components/ui/button";
 import UserAvatar from "./UserAvatar";
 import { AuthDialog } from "../AuthDialog";
+import useAuth from "../../hooks/useAuth";
 
 function AvatarDropdown() {
   const { signOut } = useAuth();
+  const { signOut: signOutReplyke } = useAuthReplyke();
   const { user } = useUser();
   const [open, setOpen] = useState(false);
 
@@ -41,12 +43,13 @@ function AvatarDropdown() {
         <p className="text-xs text-gray-400 p-2.5">{user.email}</p>
 
         <DropdownMenuItem className="cursor-pointer" asChild>
-          <a href="https://dashboard.replyke.com">Go to Dashboard</a>
+          <a href="https://dash.replyke.com">Go to Dashboard</a>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
             signOut?.();
+            signOutReplyke();
           }}
           className="cursor-pointer"
         >

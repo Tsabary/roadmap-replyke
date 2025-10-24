@@ -19,20 +19,19 @@ function Footer() {
           </div>
           <div>
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
-            <nav className="space-y-2 text-sm">
-              <a
-                href="https://discord.com/invite/REKxnCJzPz"
-                className="block transition-colors hover:text-primary"
-              >
-                Community
-              </a>
+          <nav className="space-y-2 text-sm">
               <a
                 href="https://docs.replyke.com"
                 className="block transition-colors hover:text-primary"
               >
                 Documentation
               </a>
-
+              <a
+                href="https://blog.replyke.com"
+                className="block transition-colors hover:text-primary"
+              >
+                Blog
+              </a>
               <a
                 href="https://roadmap.replyke.com"
                 className="block transition-colors hover:text-primary"
@@ -40,10 +39,16 @@ function Footer() {
                 Roadmap
               </a>
               <a
-                href="https://blog.replyke.com"
+                href="https://support.replyke.com"
                 className="block transition-colors hover:text-primary"
               >
-                Blog
+                Support
+              </a>
+              <a
+                href="https://discord.com/invite/REKxnCJzPz"
+                className="block transition-colors hover:text-primary"
+              >
+                Discord
               </a>
             </nav>
           </div>
