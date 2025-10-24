@@ -5,7 +5,7 @@ function GitHubAuthButton() {
     const { theme } = useTheme();
 
   const BASE_URL = import.meta.env.VITE_PUBLIC_SERVER_URL;
-  const url = BASE_URL + "/auth/github";
+  const url = BASE_URL + "/internal/auth/github";
 
   const isDarkTheme =
     theme === "system"

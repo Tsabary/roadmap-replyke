@@ -2,7 +2,7 @@ import { Button } from "../ui/button";
 
 function GoogleAuthButton() {
   const BASE_URL = import.meta.env.VITE_PUBLIC_SERVER_URL;
-  const url = BASE_URL + "/auth/google";
+  const url = BASE_URL + "/interal/auth/google";
 
   return (
     <Button variant="outline" type="button" className="w-full" asChild>
