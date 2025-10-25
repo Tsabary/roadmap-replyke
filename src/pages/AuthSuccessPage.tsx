@@ -7,14 +7,13 @@ function AuthSuccessPage() {
   const [searchParams] = useSearchParams();
   const { setClient, setAccessToken } = useAuth();
 
-  useEffect(() => {
-    console.log("AuthSuccessPage useEffect triggered");
-    const accessToken = searchParams.get("accessToken");
-    const id = searchParams.get("id");
-    const email = searchParams.get("email");
-    const name = searchParams.get("name");
-    const avatar = searchParams.get("avatar");
+  const accessToken = searchParams.get("accessToken");
+  const id = searchParams.get("id");
+  const email = searchParams.get("email");
+  const name = searchParams.get("name");
+  const avatar = searchParams.get("avatar");
 
+  useEffect(() => {
     if (!id) return;
 
     setAccessToken?.(accessToken);
@@ -26,7 +25,7 @@ function AuthSuccessPage() {
     });
 
     navigate("/");
-  }, [searchParams, setAccessToken, setClient, navigate]);
+  }, [navigate, id, email, name, avatar, accessToken]);
 
   return null;
 }
