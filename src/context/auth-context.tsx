@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     password: string;
   }) => {
     try {
-      const path = `/auth/sign-up`;
+      const path = `/clients-auth/sign-up`;
 
       const response = await axios.post(
         path,
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     password: string;
   }) => {
     try {
-      const path = `/auth/sign-in`;
+      const path = `/clients-auth/sign-in`;
 
       const response = await axios.post(
         path,
@@ -100,7 +100,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signOut = async () => {
     try {
-      const path = `/auth/sign-out`;
+      const path = `/clients-auth/sign-out`;
 
       await axios.post(path, undefined, { withCredentials: true });
       setAccessToken(null);
@@ -122,7 +122,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       throw new Error("Didn't authenticate using email and password");
 
     try {
-      const path = `/auth/change-password`;
+      const path = `/clients-auth/change-password`;
 
       await axios.post(
         path,
@@ -139,7 +139,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const getNewAccessToken = useCallback(async () => {
     try {
-      const path = `/auth/request-new-access-token`;
+      const path = `/clients-auth/request-new-access-token`;
 
       const response = await axios.post(path, undefined, {
         withCredentials: true,
